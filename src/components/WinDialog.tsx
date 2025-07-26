@@ -25,7 +25,7 @@ export const WinDialog = ({ open, onClose, score, moves, onNewGame }: WinDialogP
   const getPerformanceRating = (moves: number) => {
     if (moves <= 150) return { stars: 3, text: '完美！' };
     if (moves <= 200) return { stars: 2, text: '很好！' };
-    return { stars: 1, text: '不错！' };
+    return { stars: 1, text: '不錯！' };
   };
 
   const { stars, text } = getPerformanceRating(moves);
@@ -41,7 +41,7 @@ export const WinDialog = ({ open, onClose, score, moves, onNewGame }: WinDialogP
           </div>
           
           <DialogTitle className="text-2xl font-bold text-gold">
-            恭喜获胜！
+            恭喜獲勝！
           </DialogTitle>
           
           <DialogDescription className="text-foreground space-y-4">
@@ -59,11 +59,11 @@ export const WinDialog = ({ open, onClose, score, moves, onNewGame }: WinDialogP
             
             <div className="bg-felt-green-light p-4 rounded-lg space-y-2">
               <div className="flex justify-between">
-                <span>最终得分:</span>
+                <span>最終得分:</span>
                 <span className="font-bold text-gold">{score}</span>
               </div>
               <div className="flex justify-between">
-                <span>总移动数:</span>
+                <span>總移動數:</span>
                 <span className="font-bold text-gold">{moves}</span>
               </div>
             </div>
@@ -76,14 +76,14 @@ export const WinDialog = ({ open, onClose, score, moves, onNewGame }: WinDialogP
             variant="outline"
             className="flex-1 border-gold text-gold hover:bg-gold hover:text-felt-green"
           >
-            继续观看
+            繼續觀看
           </Button>
           <Button 
             onClick={handleNewGame}
             className="flex-1 bg-gold text-felt-green hover:bg-gold-light"
           >
             <RotateCcw className="w-4 h-4 mr-2" />
-            新游戏
+            新遊戲
           </Button>
         </div>
       </DialogContent>

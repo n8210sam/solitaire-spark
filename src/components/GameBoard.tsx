@@ -22,7 +22,7 @@ export const GameBoard = () => {
     if (checkWinCondition(gameState.foundations) && !gameState.gameWon) {
       setGameState(prev => ({ ...prev, gameWon: true }));
       setShowWin(true);
-      toast.success('恭喜！你赢了！', {
+      toast.success('恭喜！你贏了！', {
         description: `得分: ${getScore(gameState.moves, gameState.foundations)}`
       });
     }
@@ -68,7 +68,7 @@ export const GameBoard = () => {
       // Check if sequence is valid (alternating colors, descending rank)
       for (let i = 0; i < cardsToMove.length - 1; i++) {
         if (!canMoveToTableau(cardsToMove[i + 1], [cardsToMove[i]])) {
-          toast.error('无效的牌序列');
+          toast.error('無效的牌序列');
           return;
         }
       }
@@ -96,14 +96,14 @@ export const GameBoard = () => {
       if (canMoveToFoundation(cards[0], foundation)) {
         executeMove(targetType, targetIndex);
       } else {
-        toast.error('无法移动到基础堆');
+        toast.error('無法移動到基礎堆');
       }
     } else if (targetType === 'tableau') {
       const targetTableau = gameState.tableau[targetIndex];
       if (canMoveToTableau(cards[0], targetTableau)) {
         executeMove(targetType, targetIndex);
       } else {
-        toast.error('无法移动到此列');
+        toast.error('無法移動到此列');
       }
     }
     
@@ -141,14 +141,14 @@ export const GameBoard = () => {
     newGameState.score = getScore(newGameState.moves, newGameState.foundations);
 
     setGameState(newGameState);
-    toast.success('移动成功！');
+    toast.success('移動成功！');
   };
 
   const newGame = () => {
     setGameState(initializeGame());
     setSelectedCards(null);
     setShowWin(false);
-    toast.success('开始新游戏！');
+    toast.success('開始新遊戲！');
   };
 
   return (

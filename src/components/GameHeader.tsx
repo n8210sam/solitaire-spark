@@ -17,7 +17,7 @@ export const GameHeader = ({ score, moves, onNewGame }: GameHeaderProps) => {
         </div>
         <div className="flex items-center gap-2 text-gold-light">
           <Target className="w-4 h-4 md:w-5 md:h-5" />
-          <span className="text-sm md:text-base">移动: {moves}</span>
+          <span className="text-sm md:text-base">移動: {moves}</span>
         </div>
       </div>
       
@@ -28,7 +28,7 @@ export const GameHeader = ({ score, moves, onNewGame }: GameHeaderProps) => {
         className="text-gold border-gold hover:bg-gold hover:text-felt-green"
       >
         <RotateCcw className="w-4 h-4 mr-1 md:mr-2" />
-        新游戏
+        新遊戲
       </Button>
     </div>
   );
