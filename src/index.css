@@ -8,35 +8,59 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Casino-inspired green felt background */
+    --background: 140 30% 15%;
+    --foreground: 45 100% 95%;
 
-    --card: 0 0% 100%;
+    /* Card backgrounds */
+    --card: 0 0% 98%;
     --card-foreground: 222.2 84% 4.9%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 140 25% 20%;
+    --popover-foreground: 45 100% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Gold accents for premium feel */
+    --primary: 45 90% 55%;
+    --primary-foreground: 140 30% 15%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Subtle card table colors */
+    --secondary: 140 20% 25%;
+    --secondary-foreground: 45 100% 95%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 140 15% 20%;
+    --muted-foreground: 45 50% 75%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 45 80% 60%;
+    --accent-foreground: 140 30% 15%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 140 20% 30%;
+    --input: 140 20% 25%;
+    --ring: 45 90% 55%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Custom game colors */
+    --felt-green: 140 30% 15%;
+    --felt-green-light: 140 25% 20%;
+    --card-red: 0 70% 50%;
+    --card-black: 0 0% 15%;
+    --gold: 45 90% 55%;
+    --gold-light: 45 85% 65%;
+    
+    /* Gradients */
+    --gradient-felt: linear-gradient(135deg, hsl(140 30% 15%), hsl(140 25% 18%));
+    --gradient-gold: linear-gradient(135deg, hsl(45 90% 55%), hsl(45 85% 65%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 98%), hsl(0 0% 95%));
+    
+    /* Shadows */
+    --shadow-card: 0 4px 12px hsl(0 0% 0% / 0.3);
+    --shadow-gold: 0 0 20px hsl(45 90% 55% / 0.4);
+    --shadow-win: 0 0 40px hsl(45 90% 55% / 0.6);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 

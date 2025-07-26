@@ -52,6 +52,13 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Game-specific colors
+				'felt-green': 'hsl(var(--felt-green))',
+				'felt-green-light': 'hsl(var(--felt-green-light))',
+				'card-red': 'hsl(var(--card-red))',
+				'card-black': 'hsl(var(--card-black))',
+				'gold': 'hsl(var(--gold))',
+				'gold-light': 'hsl(var(--gold-light))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
