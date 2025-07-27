@@ -82,6 +82,19 @@ jobs:
         export GRADLE_OPTS="-Xmx4g -Dorg.gradle.daemon=false"
         ./gradlew assembleDebug --stacktrace --info
     ### end of 來自 v0 的建議 ###
+    ### 來自 chatGpt 的建議 ###
+    - name: Build Android APK with error log
+      working-directory: android
+      run: |
+        export GRADLE_OPTS="-Xmx4g -Dorg.gradle.daemon=false"
+        ./gradlew assembleDebug --stacktrace --info | tee ../gradle-build-log.txt
+    
+    - name: Upload Gradle Build Log
+      uses: actions/upload-artifact@v4
+      with:
+        name: gradle-log
+        path: gradle-build-log.txt
+    ### end of 來自 chatGpt 的建議 ###
 
     - name: Sync Capacitor
       run: |
