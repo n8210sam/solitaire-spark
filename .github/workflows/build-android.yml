@@ -39,7 +39,7 @@ jobs:
       uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
-        java-version: '17'
+        java-version: '21'   # ← 改成 21
 
     - name: Install dependencies
       run: npm install
@@ -83,6 +83,7 @@ jobs:
         ./gradlew assembleDebug --stacktrace --info
     ### end of 來自 v0 的建議 ###
     ### 來自 chatGpt 的建議 ###
+
     - name: Build Android APK with error log
       working-directory: android
       run: |
