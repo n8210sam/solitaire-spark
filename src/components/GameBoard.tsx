@@ -75,8 +75,10 @@ export const GameBoard = () => {
       
       setSelectedCards({ cards: cardsToMove, sourceType, sourceIndex });
     } else if (sourceType === 'waste') {
-      if (gameState.waste.length > 0) {
-        setSelectedCards({ cards: [gameState.waste[0]], sourceType, sourceIndex });
+      // 允許選擇廢牌堆中任何可見的牌
+      const cardIndex = gameState.waste.findIndex(c => c.id === card.id);
+      if (cardIndex !== -1) {
+        setSelectedCards({ cards: [card], sourceType, sourceIndex: cardIndex });
       }
     } else if (sourceType === 'foundation') {
       const foundation = gameState.foundations[sourceIndex];
@@ -125,7 +127,8 @@ export const GameBoard = () => {
         remainingCards[remainingCards.length - 1].faceUp = true;
       }
     } else if (sourceType === 'waste') {
-      newGameState.waste = newGameState.waste.slice(1);
+      // 從廢牌堆中移除選中的牌
+      newGameState.waste = newGameState.waste.filter(c => c.id !== cards[0].id);
     } else if (sourceType === 'foundation') {
       newGameState.foundations[sourceIndex] = newGameState.foundations[sourceIndex].slice(0, -1);
     }
@@ -179,19 +182,25 @@ export const GameBoard = () => {
 
             {/* Waste */}
             <div className="relative">
-              {gameState.waste.slice(0, 3).map((card, index) => (
-                <div 
-                  key={card.id}
-                  className="absolute"
-                  style={{ left: index * 20, zIndex: index }}
-                >
-                  <CardComponent 
-                    card={card}
-                    onClick={() => selectCard(card, 'waste', 0)}
-                    className={selectedCards?.cards[0]?.id === card.id ? 'ring-2 ring-gold' : ''}
-                  />
-                </div>
-              ))}
+              {gameState.waste.slice(0, 3).map((card, index) => {
+                const isSelected = selectedCards?.cards[0]?.id === card.id;
+                return (
+                  <div 
+                    key={card.id}
+                    className="absolute cursor-pointer"
+                    style={{ 
+                      left: index * 20, 
+                      zIndex: isSelected ? 100 : index 
+                    }}
+                  >
+                    <CardComponent 
+                      card={card}
+                      onClick={() => selectCard(card, 'waste', index)}
+                      className={isSelected ? 'ring-2 ring-gold shadow-lg' : 'hover:shadow-md transition-shadow'}
+                    />
+                  </div>
+                );
+              })}
               {gameState.waste.length === 0 && (
                 <div className="w-16 h-24 md:w-20 md:h-28 rounded-lg border-2 border-dashed border-gold/30" />
               )}
