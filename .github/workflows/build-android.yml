@@ -94,6 +94,12 @@ jobs:
       with:
         name: gradle-log
         path: gradle-build-log.txt
+
+    - name: Clean & install dependencies
+      run: |
+        rm -rf node_modules package-lock.json
+        npm ci
+
     ### end of 來自 chatGpt 的建議 ###
 
     - name: Sync Capacitor
