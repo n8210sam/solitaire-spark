@@ -28,6 +28,7 @@ jobs:
         java-version: '17'
 
     ### 來自 v0 的建議 ###
+    # 常見 Android 建置修正
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
       with:
@@ -38,12 +39,7 @@ jobs:
     - name: Accept Android SDK licenses
       run: yes | sdkmanager --licenses
     
-    - name: Clean and sync Capacitor
-      run: |
-        npx cap clean android
-        npx cap sync android
-        npx cap update android
-
+    # Gradle 相關修正
     - name: Make gradlew executable and clean
       run: |
         chmod +x android/gradlew
@@ -116,3 +112,9 @@ jobs:
         prerelease: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Clean and sync Capacitor # 來自 v0 的建議 - 常見 Android 建置修正
+      run: |
+        npx cap clean android
+        npx cap sync android
+        npx cap update android
