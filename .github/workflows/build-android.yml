@@ -51,7 +51,7 @@ jobs:
     
     - name: Clean and sync Capacitor
       run: |
-        npx cap clean android
+        # npx cap clean android # 是錯誤指令，因為 Capacitor CLI 根本沒有 clean 這個指令。 (chatGpt)
         npx cap sync android
         npx cap update android
 
