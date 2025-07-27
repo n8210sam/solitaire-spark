@@ -27,11 +27,35 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
+    ### 來自 v0 的建議 ###
     - name: Setup Android SDK
       uses: android-actions/setup-android@v3
       with:
-        api-level: 33
-        build-tools: 33.0.0
+        api-level: 34  # 更新到較新版本
+        build-tools: 34.0.0
+        ndk-version: 25.1.8937393
+
+    - name: Accept Android SDK licenses
+      run: yes | sdkmanager --licenses
+    
+    - name: Clean and sync Capacitor
+      run: |
+        npx cap clean android
+        npx cap sync android
+        npx cap update android
+
+    - name: Make gradlew executable and clean
+      run: |
+        chmod +x android/gradlew
+        cd android
+        ./gradlew clean
+    
+    - name: Build Android APK with more memory
+      working-directory: android
+      run: |
+        export GRADLE_OPTS="-Xmx4g -Dorg.gradle.daemon=false"
+        ./gradlew assembleDebug --stacktrace --info
+    ### end of 來自 v0 的建議 ###
 
     - name: Install dependencies
       run: npm install
