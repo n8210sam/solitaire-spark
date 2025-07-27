@@ -3,8 +3,22 @@ name: Build Android APK
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'src/**'
+      - 'android/**'
+      - 'public/**'
+      - 'package.json'
+      - 'capacitor.config.*'
+      - '!README.md'
   pull_request:
     branches: [ main ]
+    paths:
+      - 'src/**'
+      - 'android/**'
+      - 'public/**'
+      - 'package.json'
+      - 'capacitor.config.*'
+      - '!README.md'
   workflow_dispatch:
 
 jobs:
