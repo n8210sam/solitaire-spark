@@ -27,6 +27,16 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build React app
+      run: npm run build
+
+    - name: Add Android platform
+      run: |
+        npx cap add android || echo "Android platform already exists"
+
     ### 來自 v0 的建議 ###
     # 常見 Android 建置修正
     - name: Setup Android SDK
@@ -39,6 +49,12 @@ jobs:
     - name: Accept Android SDK licenses
       run: yes | sdkmanager --licenses
     
+    - name: Clean and sync Capacitor
+      run: |
+        npx cap clean android
+        npx cap sync android
+        npx cap update android
+
     # Gradle 相關修正
     - name: Make gradlew executable and clean
       run: |
@@ -52,16 +68,6 @@ jobs:
         export GRADLE_OPTS="-Xmx4g -Dorg.gradle.daemon=false"
         ./gradlew assembleDebug --stacktrace --info
     ### end of 來自 v0 的建議 ###
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Build React app
-      run: npm run build
-
-    - name: Add Android platform
-      run: |
-        npx cap add android || echo "Android platform already exists"
 
     - name: Sync Capacitor
       run: |
@@ -112,9 +118,3 @@ jobs:
         prerelease: false
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Clean and sync Capacitor # 來自 v0 的建議 - 常見 Android 建置修正
-      run: |
-        npx cap clean android
-        npx cap sync android
-        npx cap update android
