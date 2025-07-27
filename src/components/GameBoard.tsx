@@ -189,7 +189,7 @@ export const GameBoard = () => {
                     key={card.id}
                     className="absolute cursor-pointer"
                     style={{ 
-                      left: index * 35, 
+                      left: index * 50, 
                       zIndex: isSelected ? 100 : index 
                     }}
                   >
